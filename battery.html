@@ -53,15 +53,7 @@
     <!-- Battery -->
     <div class="container">
         <div class="row justify-content-center align-items-center" id="upperpart">
-            <div class="col-7">
-                <div class="batteryimg">
-                    <img src="images/AmaronAAM-PR-600109087(100Ah).jpeg" alt="" class="batteryImage">
-                  </div>
-            </div>
-            <div class="col-5">
-                <h1>Amaron AAM-PR-600109087 (100Ah)</h1>
-                <h4>₹15,500.00</h4>
-            </div>
+          
         </div>
         <div id="list">
             
@@ -79,19 +71,12 @@
     ></script>
     <script>
       var id = localStorage.batid;
+      alert(id)
       $.ajax({
         url: `data/Battery/${id}.json`,
         dataType: "json",
         success: function (data) {
-            document.getElementById("list").upperpart=`<div class="col-lg-7 col-md-6 col-sm-12">
-                <div class="batteryimg">
-                    <img src=${data[0].img} alt="" class="batteryImage">
-                  </div>
-            </div>
-            <div class="col-lg-5 col-md-6 col-sm-12">
-                <h1>${data[0].name}</h1>
-                <h4>${data[0].price}</h4>
-            </div>`
+            document.getElementById("upperpart").innerHTML=`<div class="col-lg-7 col-md-6 col-sm-12"><div class="batteryimg"><img src=${data[0].img} alt="" class="batteryImage"></div></div><div class="col-lg-5 col-md-6 col-sm-12"><h1>${data[0].name}</h1><h4>${data[0].price}</h4></div>`
             document.getElementById("list").innerHTML=`${data[0].list}`
         },
       });
